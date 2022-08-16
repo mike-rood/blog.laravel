@@ -17,6 +17,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
     Route::get('/', IndexController::class);
 });
 
+Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Categories'], function () {
+    Route::prefix('admin/categories')->group(function () {
+        Route::get('/', IndexController::class);    
+    });    
+});
+
 Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog'], function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', IndexController::class);    
