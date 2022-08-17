@@ -1,3 +1,0 @@
-
-<p>Categories list</p>
-

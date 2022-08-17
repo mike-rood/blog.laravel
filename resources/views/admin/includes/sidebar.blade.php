@@ -1,6 +1,6 @@
 <ul>
     <li>
-        Категории
+        <a href="{{ route('admin.category.index') }}">Категории</a>
     </li>
     <li>
         Тэги

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('https://necolas.github.io/normalize.css/8.0.1/normalize.css')}}">
+    <link rel="stylesheet" href="{{ asset('https://necolas.github.io/normalize.css/8.0.1/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('style.css')}}">
 </head>
 <body>    
@@ -18,4 +18,5 @@
             @include('layouts.includes.footer')
         </section>        
     </section>
+    <script src="{{ asset('main.js') }}"></script>
 </body>

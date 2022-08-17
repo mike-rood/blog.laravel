@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function __invoke() {
-        return view('admin.index', ['page' => 'blog']);
+        return view('admin.index', ['page' => 'blog.index', 'title' => 'Blog']);
     }
 }

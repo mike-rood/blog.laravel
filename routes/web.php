@@ -17,15 +17,16 @@ Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
     Route::get('/', IndexController::class);
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Categories'], function () {
-    Route::prefix('admin/categories')->group(function () {
-        Route::get('/', IndexController::class);    
+Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Category'], function () {
+    Route::prefix('admin/category')->group(function () {
+        Route::get('/create', CreateController::class)->name('admin.category.create');
+        Route::get('/', IndexController::class)->name('admin.category.index');    
     });    
 });
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog'], function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/', IndexController::class);    
+        Route::get('/', IndexController::class)->name('admin.index');    
     });    
 });
 
