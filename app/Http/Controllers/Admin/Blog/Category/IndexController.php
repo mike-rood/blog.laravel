@@ -9,7 +9,7 @@ use App\Models\Category;
 class IndexController extends Controller
 {
     public function __invoke() {
-        $categories = Category::all()->toArray();
+        $categories = Category::all();
         return view('admin.index', ['page' => 'category.index', 'title' => 'Category', 'categories' => $categories ]);
     }
 }

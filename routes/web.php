@@ -20,6 +20,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
 Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Category'], function () {
     Route::prefix('admin/category')->group(function () {
         Route::get('/create', CreateController::class)->name('admin.category.create');
+        Route::get('/{category}', ShowController::class)->name('admin.category.show');
         Route::post('/', StoreController::class)->name('admin.category.store');
         Route::get('/', IndexController::class)->name('admin.category.index');    
     });    

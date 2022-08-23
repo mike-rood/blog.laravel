@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('https://necolas.github.io/normalize.css/8.0.1/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('style.css')}}">
+    <script src="https://kit.fontawesome.com/c42221788b.js" crossorigin="anonymous"></script>
 </head>
 <body>    
     <section class='body-wrapper'>

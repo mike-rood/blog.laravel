@@ -1,19 +1,20 @@
 <section>
-    
-    <table>
+    <table class="list">
         <thead>
         <th>ID</th>
         <th>Title</th>
+        <th>Actions</th>
         <th>Created at</th>
         <th>Updated ad</th>
         </thead>
         <tbody>
             @forelse($categories as $category)
             <tr>
-                <td>{{ $category['id'] }}</td>
-                <td>{{ $category['title'] }}</td>
-                <td>{{ $category['created_at'] }}</td>
-                <td>{{ $category['updated_at'] }}</td>
+                <td>{{ $category->id }}</td>
+                <td>{{ $category->title }}</td>
+                <td><a href="{{ route('admin.category.show', $category->id) }}"><i class="fa-solid fa-eye"></i></a> <i class="fa-solid fa-pen-to-square"></i> <i class="fa-solid fa-eraser"></i></td>
+                <td>{{ date('j F Y G:i:s', strtotime($category->created_at)) }}</td>
+                <td>{{ date('j F Y G:i:s', strtotime($category->created_at)) }}</td>
             </tr>
             @empty
             <tr><td colspan=4>No categories yet</td></tr>

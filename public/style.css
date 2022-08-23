@@ -1,3 +1,7 @@
+td {
+    text-align: center;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -45,4 +49,13 @@
 .footer-wrapper {
     margin-bottom: 10px;
     flex: 0 0 100px;
+}
+
+.list {
+    min-width: 100%;
+}
+
+.single {
+    min-width: 50%;
+    margin: 0 auto;
 }
