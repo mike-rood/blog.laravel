@@ -12,7 +12,7 @@
             <tr>
                 <td>{{ $category->id }}</td>
                 <td>{{ $category->title }}</td>
-                <td><a href="{{ route('admin.category.show', $category->id) }}"><i class="fa-solid fa-eye"></i></a> <i class="fa-solid fa-pen-to-square"></i> <i class="fa-solid fa-eraser"></i></td>
+                <td><a href="{{ route('admin.category.show', $category->id) }}"><i class="fa-solid fa-eye"></i></a> <a href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen-to-square"></i></a> <i class="fa-solid fa-eraser"></i></td>
                 <td>{{ date('j F Y G:i:s', strtotime($category->created_at)) }}</td>
                 <td>{{ date('j F Y G:i:s', strtotime($category->created_at)) }}</td>
             </tr>
