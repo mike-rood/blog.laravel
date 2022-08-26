@@ -41,6 +41,18 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Tag'], function ()
     });    
 });
 
+Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Post'], function () {
+    Route::prefix('admin/post')->group(function () {
+        Route::get('/create', CreateController::class)->name('admin.post.create');
+        Route::get('/{post}/edit', EditController::class)->name('admin.post.edit');        
+        Route::patch('/{post}', UpdateController::class)->name('admin.post.update');
+        Route::delete('/{post}', DeleteController::class)->name('admin.post.delete');
+        Route::get('/{post}', ShowController::class)->name('admin.post.show');
+        Route::post('/', StoreController::class)->name('admin.post.store');
+        Route::get('/', IndexController::class)->name('admin.post.index');   
+    });    
+});
+
 Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog'], function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', IndexController::class)->name('admin.index');    
