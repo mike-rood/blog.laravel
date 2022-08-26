@@ -8,6 +8,6 @@ use App\Models\Category;
 class EditController extends Controller
 {
     public function __invoke(Category $category) {
-        return view('admin.index', ['page' => 'category.edit', 'category' => $category, 'title' => "Category {$category->title}"]);
+        return view('admin.category.edit', ['category' => $category, 'title' => "Category {$category->title}"]);
     }
 }

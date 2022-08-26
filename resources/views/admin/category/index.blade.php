@@ -1,4 +1,11 @@
-<section>
+@extends('layouts.template')
+
+@section('main')
+@include('admin.includes.sidebar')
+
+<main class='border content'>
+    <h2>{{ $title }}</h2>
+    <section>
     <table class="list">
         <thead>
         <th>ID</th>
@@ -30,18 +37,24 @@
             <tr><td colspan=4>No categories yet</td></tr>
             @endforelse
         </tbody>
-    </table>
-    
-</section>
-<div>
-    <input type="button" onclick="toggleVisibility('CreateCategory', 'CreateCategoryButton')" value="Add new category" id="CreateCategoryButton">
-    <form class="hideable hidden" action="{{ route('admin.category.store') }}" autocomplete="on" method="POST" id="CreateCategory">
-        @csrf
-        <p><input type="text" name="title" placeholder="Enter category title"></p>
-        <p><input type="submit" value="Create"></p>        
-    </form>
-    @error('title')
-    <p>Title can not be empty</p>
-    @enderror
-</div>
+    </table>    
+    </section>
+    <section style="display: flex">
+        <div>
+            <input type="button" onclick="toggleVisibility('CreateCategory', 'CreateCategoryButton')" value="Quick create new category" id="CreateCategoryButton">
+            <form class="hideable hidden" action="{{ route('admin.category.store') }}" autocomplete="on" method="POST" id="CreateCategory">
+                @csrf
+                <p><input type="text" name="title" placeholder="Enter category title"></p>
+                <p><input type="submit" value="Create"></p>        
+            </form>
+            @error('title')
+            <p>Title can not be empty</p>
+            @enderror
+        </div>
+        <div><a href="{{ route('admin.category.create') }}">Форма добавления новой категории</a></div>
+    </section>
+</main>
+@endsection
+
+
 

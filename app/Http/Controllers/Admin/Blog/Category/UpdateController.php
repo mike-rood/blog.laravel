@@ -11,7 +11,6 @@ class UpdateController extends Controller
     public function __invoke(UpdateRequest $request, Category $category) {
         $data = $request->validated();
         $category->update($data);
-        return view('admin.index', ['page' => 'category.show', 'category' => $category, 'title' => "Category {$category->title}"]);
-        //return redirect()->route('admin.category.index');
+        return view('admin.category.show', ['category' => $category, 'title' => "Category {$category->title}"]);
     }
 }

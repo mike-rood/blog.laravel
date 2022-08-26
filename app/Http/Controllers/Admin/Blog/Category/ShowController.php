@@ -8,6 +8,6 @@ use App\Models\Category;
 class ShowController extends Controller
 {
     public function __invoke(Category $category) {
-        return view('admin.index', ['page' => 'category.show', 'category' => $category, 'title' => "Category {$category->title}"]);
+        return view('admin.category.show', ['category' => $category, 'title' => "Category {$category->title}"]);
     }
 }
