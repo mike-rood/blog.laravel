@@ -29,6 +29,18 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Category'], functi
     });    
 });
 
+Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Tag'], function () {
+    Route::prefix('admin/tag')->group(function () {
+        Route::get('/create', CreateController::class)->name('admin.tag.create');
+        Route::get('/{tag}/edit', EditController::class)->name('admin.tag.edit');        
+        Route::patch('/{tag}', UpdateController::class)->name('admin.tag.update');
+        Route::delete('/{tag}', DeleteController::class)->name('admin.tag.delete');
+        Route::get('/{tag}', ShowController::class)->name('admin.tag.show');
+        Route::post('/', StoreController::class)->name('admin.tag.store');
+        Route::get('/', IndexController::class)->name('admin.tag.index');   
+    });    
+});
+
 Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog'], function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', IndexController::class)->name('admin.index');    
