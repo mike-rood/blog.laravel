@@ -7,7 +7,7 @@ use App\Models\Post;
 
 class EditController extends Controller
 {
-    public function __invoke(Post $tag) {
+    public function __invoke(Post $post) {
         return view('admin.post.edit', ['post' => $post, 'title' => "Post {$post->title}"]);
     }
 }

@@ -22,7 +22,7 @@
                 <td><a href="{{ route('admin.post.show', $post->id) }}"><i class="fa-solid fa-eye"></i></a></td>
                 <td><a href="{{ route('admin.post.edit', $post->id) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
                 <td>
-                    <form action="{{ route('admin.post.delete', $tag->id) }}" method="POST">
+                    <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit">

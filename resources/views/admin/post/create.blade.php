@@ -7,11 +7,18 @@
     <h2>{{ $title }}</h2>
     <form action="{{ route('admin.post.store') }}" autocomplete="on" method="POST">
         @csrf
-        <p><input type="text" name="title" placeholder="Enter post title"></p>
-        <p><input type="submit" value="Create"></p>        
+        <div class="form-group"><input type="text" name="title" placeholder="Enter post title" value="{{ old('title') }}"></div>
+        @error('title')
+        <p>Title can not be empty</p>
+        @enderror
+        <div class="form-group w-75"><textarea id="summernote" name="content">
+            {{ old('content') }}
+            </textarea></div>
+        @error('content')
+        <p>Content can not be empty</p>
+        @enderror
+        <div class="form-group"><input type="submit" value="Create"></div>
     </form>
-    @error('title')
-    <p>Title can not be empty</p>
-    @enderror
+    
 </main>
 @endsection
