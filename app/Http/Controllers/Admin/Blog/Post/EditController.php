@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Admin\Blog\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
 
 class EditController extends Controller
 {
     public function __invoke(Post $post) {
-        return view('admin.post.edit', ['post' => $post, 'title' => "Post {$post->title}"]);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.post.edit', ['post' => $post, 'title' => "Post {$post->title}", 'categories' => $categories, 'tags' => $tags]);
     }
 }
