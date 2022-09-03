@@ -40,16 +40,24 @@
                 </div>
             </div>
             @error('main_image')
-            <p>Main image can not be empty</p>
+            <div class="alert-warning">Main image can not be empty</div>
             @enderror
         </div>
-        <div class="form-group">
-            <label>Выберите категорию</label>
-            <select class="form-control" name="category_id">
+        <div class="form-group w-75">
+            <label>Категория</label>
+            <select class="form-control" data-placeholder="Выберите категорию" name="category_id">
                 @foreach ($categories as $category)
                 <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected' : '' }}>{{ $category->title }}</option>
                 @endforeach
             </select>            
+        </div>
+        <div class="form-group">
+            <label>Тэги</label>
+            <select class="js-example-basic-multiple w-100" data-placeholder="Выберите тэги" name="tag_ids[]" multiple="multiple">
+                @foreach ($tags as $tag)
+                <option value="{{ $tag->id }}" {{ is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? 'selected' : '' }}>{{ $tag->title }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group"><input type="submit" value="Create"></div>
     </form>    
