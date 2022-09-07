@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Blog\Post;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Blog\Post\BaseController;
 use App\Models\Post;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function __invoke() {
         $posts = Post::all();

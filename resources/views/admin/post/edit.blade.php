@@ -68,7 +68,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="form-group"><input type="submit" value="Create"></div>
+        <div class="form-group"><input type="submit" value="Update"></div>
     </form>
 </main>
 @endsection
