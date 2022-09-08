@@ -11,7 +11,7 @@
         <div class="form-group">
             <input type="text" name="title" placeholder="Enter post title" value="{{ $post->title }}">
             @error('title')
-            <p>Title can not be empty</p>
+            <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>        
         <div class="form-group w-75">
@@ -20,7 +20,7 @@
             </textarea>
         </div>
         @error('content')
-        <p>Content can not be empty</p>
+        <div class="text-danger">{{ $message }}</div>
         @enderror
         <div class="form-group w-75">
             <label>Превью</label>
@@ -34,7 +34,7 @@
                 </div>
             </div>
             @error('preview_image')
-            <p>Preview can not be empty</p>
+            <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group w-75">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             @error('main_image')
-            <div class="alert-warning">Main image can not be empty</div>
+            <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group w-75">
@@ -58,7 +58,10 @@
                 @foreach ($categories as $category)
                 <option value="{{ $category->id }}" {{ $category->id == $post->category_id ? 'selected' : '' }}>{{ $category->title }}</option>
                 @endforeach
-            </select>            
+            </select>
+            @error('category_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label>Тэги</label>
@@ -67,6 +70,9 @@
                 <option value="{{ $tag->id }}" {{ is_array( $post->tags->pluck('id')->toArray() ) && in_array( $tag->id, $post->tags->pluck('id')->toArray() ) ? 'selected' : '' }}>{{ $tag->title }}</option>
                 @endforeach
             </select>
+            @error('tag_ids')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group"><input type="submit" value="Update"></div>
     </form>
