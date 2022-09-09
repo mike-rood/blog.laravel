@@ -59,6 +59,18 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog'], function () {
     });    
 });
 
+Route::group(['namespace' => 'App\Http\Controllers\Admin\Account'], function () {
+    Route::prefix('admin/account')->group(function () {
+        Route::get('/create', CreateController::class)->name('admin.account.create');
+        Route::get('/{account}/edit', EditController::class)->name('admin.account.edit');        
+        Route::patch('/{account}', UpdateController::class)->name('admin.account.update');
+        Route::delete('/{account}', DeleteController::class)->name('admin.account.delete');
+        Route::get('/{account}', ShowController::class)->name('admin.account.show');
+        Route::post('/', StoreController::class)->name('admin.account.store');
+        Route::get('/', IndexController::class)->name('admin.account.index');   
+    });    
+});
+
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

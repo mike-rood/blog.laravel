@@ -1,3 +1,11 @@
+tr {    
+    border-bottom: 1px solid #636b6f;
+}
+
+th {
+    text-align: center;
+}
+
 td {
     text-align: center;
 }
@@ -44,6 +52,7 @@ td {
 
 .content {
     flex-grow: 1;
+    padding: 20px 30px;
 }
 
 .footer-wrapper {
@@ -58,4 +67,12 @@ td {
 .single {
     min-width: 50%;
     margin: 0 auto;
+}
+
+.w-15 {
+    min-width: 15%;
+}
+
+.w-20 {
+    min-width: 20%;
 }

@@ -8,33 +8,33 @@
     <section>
     <table class="list">
         <thead>
-        <th>ID</th>
-        <th>Title</th>
-        <th colspan="3">Actions</th>
-        <th>Created at</th>
-        <th>Updated at</th>
+        <th class="w-5">ID</th>
+        <th class="w-full">Title</th>
+        <th colspan="3" class="w-15">Actions</th>
+        <th class="w-20">Created at</th>
+        <th class="w-20">Updated at</th>
         </thead>
         <tbody>
             @forelse($categories as $category)
             <tr>
-                <td>{{ $category->id }}</td>
-                <td>{{ $category->title }}</td>
-                <td><a href="{{ route('admin.category.show', $category->id) }}"><i class="fa-solid fa-eye"></i></a></td>
-                <td><a href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                <td>
-                    <form action="{{ route('admin.category.delete', $category->id) }}" method="POST">
+                <td class="w-5">{{ $category->id }}</td>
+                <td class="w-full">{{ $category->title }}</td>
+                <td class="w-5"><a href="{{ route('admin.category.show', $category->id) }}"><i class="fa-solid fa-eye"></i></a></td>
+                <td class="w-5"><a href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>                
+                <td class="w-5">
+                    <form action="{{ route('admin.category.delete', $category->id) }}" method="POST" class="m-0">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">
-                            <i class="fa-solid fa-eraser"></i>
+                        <button type="submit" class="border-0 bg-transparent">
+                            <i class="fa-solid fa-eraser text-danger" role="button"></i>
                         </button>                        
                     </form>
                 </td>
-                <td>{{ date('j F Y G:i:s', strtotime($category->created_at)) }}</td>
-                <td>{{ date('j F Y G:i:s', strtotime($category->updated_at)) }}</td>
+                <td class="w-20">{{ date('d M Y G:i:s', strtotime($category->created_at)) }}</td>
+                <td class="w-20">{{ date('d M Y G:i:s', strtotime($category->updated_at)) }}</td>
             </tr>
             @empty
-            <tr><td colspan=4>No categories yet</td></tr>
+            <tr><td colspan="7">No categories yet</td></tr>
             @endforelse
         </tbody>
     </table>    
