@@ -13,12 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
-    Route::get('/', IndexController::class);
-});
-
 Route::group([], function () {
-//Route::group(['middleware' => ['auth', 'admin']], function () {
+//Route::group(['middleware' => 'verified'], function () {
+//Route::group(['middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Category'], function () {
         Route::prefix('admin/category')->group(function () {
             Route::get('/create', CreateController::class)->name('admin.category.create');
@@ -74,6 +71,11 @@ Route::group([], function () {
     });
 });
 
-Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
+    Route::get('/', IndexController::class);
+});
