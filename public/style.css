@@ -76,3 +76,7 @@ td {
 .w-20 {
     min-width: 20%;
 }
+
+.display-flex {
+    display: flex;
+}

@@ -25,6 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'role' => 'required|integer',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string'
         ];
@@ -34,6 +35,8 @@ class StoreRequest extends FormRequest
         return [
             'name.required' => 'Это поле необходимо для заполнения',
             'name.string' => 'Ожидается строковое значение',
+            'role.required' => 'Это поле необходимо для заполнения',
+            'role.integer' => 'Ожидается числовое значение',
             'email.required' => 'Это поле необходимо для заполнения',
             'email.string' => 'Ожидается строковое значение',
             'email.email' => 'Неправильный формат введённых данных',

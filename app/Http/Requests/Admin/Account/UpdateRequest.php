@@ -25,7 +25,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|string|email|unique:users'
+            'role' => 'required|integer',
+            'email' => 'required|string|email|unique:users,email,' . $this->user_id,
+            'user_id' => 'required|integer|exists:users,id'
         ];
     }
     public function messages() 
@@ -33,6 +35,8 @@ class UpdateRequest extends FormRequest
         return [
             'name.required' => 'Это поле необходимо для заполнения',
             'name.string' => 'Ожидается строковое значение',
+            'role.required' => 'Это поле необходимо для заполнения',
+            'role.integer' => 'Ожидается числовое значение',
             'email.required' => 'Это поле необходимо для заполнения',
             'email.string' => 'Ожидается строковое значение',
             'email.email' => 'Неправильный формат введённых данных',

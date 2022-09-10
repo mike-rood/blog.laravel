@@ -8,6 +8,7 @@ use App\Models\User;
 class EditController extends Controller
 {
     public function __invoke(User $account) {
-        return view('admin.account.edit', ['user' => $account, 'title' => "User {$account->name}"]);
+        $roles = User::getRoles();
+        return view('admin.account.edit', ['user' => $account, 'roles' => $roles, 'title' => "User {$account->name}"]);
     }
 }
