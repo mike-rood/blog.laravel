@@ -26,8 +26,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|string',
             'role' => 'required|integer',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string'
+            'email' => 'required|string|email|unique:users'
         ];
     }
     public function messages() 
@@ -40,9 +39,7 @@ class StoreRequest extends FormRequest
             'email.required' => 'Это поле необходимо для заполнения',
             'email.string' => 'Ожидается строковое значение',
             'email.email' => 'Неправильный формат введённых данных',
-            'email.unique' => 'Пользователь с таким email уже существует',
-            'password.required' => 'Это поле необходимо для заполнения',
-            'password.string' => 'Ожидается строковое значение'
+            'email.unique' => 'Пользователь с таким email уже существует'
         ];
     }
 }

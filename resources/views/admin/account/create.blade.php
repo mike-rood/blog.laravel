@@ -34,13 +34,6 @@
             <span class="alert-danger">{{ $message }}</span>
             @enderror
         </div>
-        <div>
-            <label for="password" class="w-20">Enter password:  </label>
-            <input type="text" name="password" value="{{ old('password') }}">
-            @error('password')
-            <span class="alert-danger">{{ $message }}</span>
-            @enderror
-        </div>     
         <div><input type="submit" value="Create"></div>        
     </form>    
 </main>

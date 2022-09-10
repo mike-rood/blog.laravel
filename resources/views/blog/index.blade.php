@@ -6,5 +6,6 @@
 </aside>
 <main class='border content'>
     <h2>Blog</h2>
+    {{ dd($_ENV )}}
 </main>
 @endsection
