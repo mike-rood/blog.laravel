@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group([], function () {
+//Route::group([], function () {
 //Route::group(['middleware' => 'verified'], function () {
-//Route::group(['middleware' => ['auth', 'admin', 'verified']], function () {
+Route::group(['middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Category'], function () {
         Route::prefix('admin/category')->group(function () {
             Route::get('/create', CreateController::class)->name('admin.category.create');
