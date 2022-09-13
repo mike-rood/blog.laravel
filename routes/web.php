@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function() {    
+    Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function() {
+        Route::get('/', 'IndexController')->name('personal.liked.index');
+    });
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function() {
+        Route::get('/', 'IndexController')->name('personal.comment.index');
+    });
+    Route::group(['namespace' => 'Main'], function() {
+        Route::get('/', 'IndexController')->name('personal.index');
+    });
+});
+
 //Route::group([], function () {
 //Route::group(['middleware' => 'verified'], function () {
 Route::group(['middleware' => ['auth', 'admin', 'verified']], function () {
