@@ -35,7 +35,7 @@
                 <td class="w-20">{{ date('d M Y G:i:s', strtotime($post->updated_at)) }}</td>
             </tr>
             @empty
-            <tr><td colspan="7">No posts yet</td></tr>
+            <tr><td colspan="6">No posts yet</td></tr>
             @endforelse
         </tbody>
     </table>

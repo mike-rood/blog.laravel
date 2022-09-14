@@ -19,6 +19,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'perso
         Route::get('/', 'IndexController')->name('personal.liked.index');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function() {
+        Route::get('/{comment}/edit', 'EditController')->name('personal.comment.edit');
+        Route::patch('/{comment}', 'UpdateController')->name('personal.comment.update');
+        Route::delete('/{comment}', 'DeleteController')->name('personal.comment.delete');
         Route::get('/', 'IndexController')->name('personal.comment.index');
     });
     Route::group(['namespace' => 'Main'], function() {

@@ -37,7 +37,11 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
         
+        Route::pattern('account', '[0-9]+');
         Route::pattern('category', '[0-9]+');
+        Route::pattern('comment', '[0-9]+');
+        Route::pattern('post', '[0-9]+');
+        Route::pattern('tag', '[0-9]+');
     }
 
     /**

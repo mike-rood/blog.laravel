@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\SendVerifyWithQueueNotification;
 use App\Models\Post;
+use App\Models\Comment;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -66,5 +67,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function likedPosts() 
     {
         return $this->belongsToMany(Post::class, 'post_user_likes', 'user_id', 'post_id');
+    }
+    
+    public function comments() 
+    {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 }
