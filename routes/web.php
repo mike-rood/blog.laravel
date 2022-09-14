@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function() {    
     Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function() {
+        Route::delete('/{post}', 'DeleteController')->name('personal.liked.delete');
         Route::get('/', 'IndexController')->name('personal.liked.index');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function() {

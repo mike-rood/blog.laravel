@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_tags', function (Blueprint $table) {
+        Schema::create('post_user_likes', function (Blueprint $table) {
             $table->id();
             
-            $table->index('post_id', 'post_id_idx');
-            $table->index('tag_id', 'tag_id_idx');
+            $table->index('post_id', 'pul_post_idx');
+            $table->index('user_id', 'pul_user_idx');
             
             $table->foreignId('post_id')->constrained();
-            $table->foreignId('tag_id')->constrained();
-                        
+            $table->foreignId('user_id')->constrained();
+            
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tags');
+        Schema::dropIfExists('post_user_likes');
     }
 };
