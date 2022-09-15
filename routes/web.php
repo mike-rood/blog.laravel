@@ -93,5 +93,5 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
-    Route::get('/', IndexController::class);
+    Route::get('/', IndexController::class)->name('blog.index');
 });

@@ -80,3 +80,16 @@ td {
 .display-flex {
     display: flex;
 }
+
+.max-w-33 {
+    max-width: 33%;
+}
+
+.max-w-200 {
+    max-width: 200px;
+}
+
+.my-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+}
