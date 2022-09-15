@@ -93,5 +93,9 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
+    Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function() {
+        Route::get('/{post}', ShowController::class)->name('blog.post.show');
+        Route::get('/', IndexController::class)->name('blog.post.index');        
+    });
     Route::get('/', IndexController::class)->name('blog.index');
 });
