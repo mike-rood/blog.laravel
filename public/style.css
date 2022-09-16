@@ -1,3 +1,7 @@
+a:hover {
+    text-decoration: none;
+}
+
 tr {    
     border-bottom: 1px solid #636b6f;
 }
@@ -92,4 +96,8 @@ td {
 .my-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
+}
+
+.mt-10 {
+    margin-top: 10px;
 }

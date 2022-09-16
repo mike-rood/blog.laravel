@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Carbon\Carbon;
+use App\Models\Comment;
 
 class ShowController extends Controller
 {
@@ -13,8 +14,7 @@ class ShowController extends Controller
         $date = Carbon::parse($post->created_at);
         $relatedPosts = Post::where('category_id', $post->category_id)
                 ->where('id', '!=', $post->id)
-                ->get()
-                ->take(3);
+                ->get()->take(3);
         return view('blog.post.show', compact('post', 'date', 'relatedPosts'));
     }
 }

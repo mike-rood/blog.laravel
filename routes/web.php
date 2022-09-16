@@ -29,9 +29,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'perso
     });
 });
 
-//Route::group([], function () {
+Route::group([], function () {
 //Route::group(['middleware' => 'verified'], function () {
-Route::group(['middleware' => ['auth', 'admin', 'verified']], function () {
+//Route::group(['middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Category'], function () {
         Route::prefix('admin/category')->group(function () {
             Route::get('/create', CreateController::class)->name('admin.category.create');
@@ -94,6 +94,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
     Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function() {
+        Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function () {
+            Route::post('/', StoreController::class)->name('blog.comment.store');
+        });
         Route::get('/{post}', ShowController::class)->name('blog.post.show');
         Route::get('/', IndexController::class)->name('blog.post.index');        
     });

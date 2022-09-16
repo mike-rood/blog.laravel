@@ -19,7 +19,7 @@ return new class extends Migration
             $table->index('post_id', 'post_id_idx');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('post_id')->constrained();
-            $table->string('message');
+            $table->text('message');
             $table->timestamps();
             $table->softDeletes();
         });
