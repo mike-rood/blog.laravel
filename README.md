@@ -1,3 +1,1 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">Учебный проект по курсу <a href="https://www.youtube.com/playlist?list=PLd2_Os8Cj3t8StX6GztbdMIUXmgPuingB" target="_blank"><b>Шаг 2. Laravel курс. Блог</b></a></p>
