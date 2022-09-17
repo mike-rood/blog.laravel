@@ -97,6 +97,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
         Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function () {
             Route::post('/', StoreController::class)->name('blog.comment.store');
         });
+        Route::group(['namespace' => 'Like', 'prefix' => '{post}/likes'], function () {
+            Route::post('/', UpdateController::class)->name('post.like.update');
+        });
         Route::get('/{post}', ShowController::class)->name('blog.post.show');
         Route::get('/', IndexController::class)->name('blog.post.index');        
     });
