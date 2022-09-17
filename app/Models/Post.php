@@ -19,7 +19,7 @@ class Post extends Model
     protected $guarded = false;
     
     protected $withCount = ['likes'];
-
+    protected $with = ['category', 'tags', 'likes', 'comments'];
 
     public function tags() 
     {
