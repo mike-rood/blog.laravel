@@ -11,6 +11,10 @@ class ShowController extends Controller
 {
     public function __invoke(Tag $tag) 
     {
+        $categories = Category::get();
+        $tags = Tag::get();
         
+        $posts = $tag->posts;
+        return view('blog.tag.show', compact('categories', 'tags', 'posts', 'tag'));
     }
 }
