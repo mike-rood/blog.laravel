@@ -12,10 +12,9 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request, Post $post) 
     {
         $data = $request->validated();
-        //$data['user_id'] = auth()->user()->id;
-        $data['user_id'] = 12;
+        $data['user_id'] = auth()->user()->id;
         $data['post_id'] = $post->id;
         Comment::create($data);
-        return redirect()->route('blog.post.show', $post->id);
+        return redirect()->back();
     }
 }

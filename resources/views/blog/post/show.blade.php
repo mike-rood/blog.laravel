@@ -1,9 +1,9 @@
 @extends('layouts.template')
 
 @section('main')
-<aside class='border menu'>
-    <h3>User menu</h3>
-</aside>
+
+@include('layouts.includes.sidebar')
+
 <main class='border content'>
     <section class="border">
         <p>{{ $post->title }}</p>        

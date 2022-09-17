@@ -29,9 +29,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'perso
     });
 });
 
-Route::group([], function () {
+//Route::group([], function () {
 //Route::group(['middleware' => 'verified'], function () {
-//Route::group(['middleware' => ['auth', 'admin', 'verified']], function () {
+Route::group(['middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'App\Http\Controllers\Admin\Blog\Category'], function () {
         Route::prefix('admin/category')->group(function () {
             Route::get('/create', CreateController::class)->name('admin.category.create');
@@ -102,6 +102,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
         });
         Route::get('/{post}', ShowController::class)->name('blog.post.show');
         Route::get('/', IndexController::class)->name('blog.post.index');        
+    });
+    Route::group(['namespace' => 'Category', 'prefix' => 'category'], function () {
+        Route::get('/{category}', ShowController::class)->name('blog.category.show');
+    });
+    Route::group(['namespace' => 'Tag', 'prefix' => 'tag'], function () {
+        Route::get('/{tag}', ShowController::class)->name('blog.tag.show');
     });
     Route::get('/', IndexController::class)->name('blog.index');
 });
