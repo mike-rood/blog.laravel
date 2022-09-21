@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Personal\Comment;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Category;
+use App\Models\Tag;
 
 class EditController extends Controller
 {
     public function __invoke(Comment $comment) 
     {
-        return view('personal.comment.edit', ['title' => "Editing comment {$comment->id}", 'comment' => $comment]);
+        $title = "Editing comment {$comment->id}";
+        $categories = Category::get();
+        $tags = Tag::get();
+        return view('personal.comment.edit', compact('title', 'categories', 'tags', 'comment'));
     }
 }

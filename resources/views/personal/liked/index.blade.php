@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('main')
-@include('personal.includes.sidebar')
+@include('layouts.includes.sidebar')
 <main class='border content'> 
     <div>
         <h2>{{ $title }}</h2>
@@ -21,7 +21,7 @@
             <tr>
                 <td class="w-5">{{ $post->id }}</td>
                 <td class="w-full">{{ $post->title }}</td>
-                <td class="w-5"><a href="{{ route('admin.post.show', $post->id) }}"><i class="fa-solid fa-eye"></i></a></td>                
+                <td class="w-5"><a href="{{ route('blog.post.show', $post->id) }}"><i class="fa-solid fa-eye"></i></a></td>                
                 <td class="w-5">
                     <form action="{{ route('personal.liked.delete', $post->id) }}" method="POST">
                         @csrf

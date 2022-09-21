@@ -18,7 +18,7 @@
                 <div class="d-flex flex-row justify-content-between align-items-baseline">
                     <p class="mr-1">{{ $post->likes_count }} </p>
                     @auth()
-                        @if(auth()->user()->likes->contains($user->id))
+                        @if(auth()->user()->likedPosts->contains($post->id))
                             <i class="fa-solid fa-heart"></i>
                             @else
                             <i class="fa-regular fa-heart"></i>
@@ -36,5 +36,4 @@
     @endforelse
     </section>    
 </main>
-
 @endsection()

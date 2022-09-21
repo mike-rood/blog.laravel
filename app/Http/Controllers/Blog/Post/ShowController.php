@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Blog\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Carbon\Carbon;
-use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Tag;
 

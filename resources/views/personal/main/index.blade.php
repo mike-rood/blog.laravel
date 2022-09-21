@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('main')
-@include('personal.includes.sidebar')
+@include('layouts.includes.sidebar')
 <main class='border content'>    
     <div>
         <h2>{{ $title }}</h2>
