@@ -20,7 +20,7 @@
             @forelse($comments as $comment)
             <tr>
                 <td class="w-5">{{ $comment->id }}</td>
-                <td class="w-full">{{ $comment->message }}</td>
+                <td class="w-full">{!! $comment->message !!}</td>
                 <td class="w-5"><a href="{{ route('personal.comment.edit', $comment->id) }}"><i class="fa-solid fa-eye"></i></a></td>                
                 <td class="w-5">
                     <form action="{{ route('personal.comment.delete', $comment->id) }}" method="POST">

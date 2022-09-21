@@ -6,7 +6,7 @@
 
 <main class='border content'>
     <section class="border">
-        <p>{{ $post->title }}</p>        
+        <p>{{ $post->title }}</p>
         <img class="w-75" src="{{ asset('storage/' . $post->main_image) }}" alt="preview">
         <p>{!! $post->content !!}</p>
         <div class="d-flex flex-row justify-content-between">            
@@ -29,7 +29,17 @@
                 </form>
                 @endauth()               
             </div>
-        </div>        
+        </div>
+        <div class="d-flex flex-row justify-content-between">
+            <p>Тэги:</p>
+            <div class="d-flex flex-row justify-content-between">
+                @forelse ($post->tags as $tag)
+                <p><a href="{{ route('blog.tag.show', $tag->id) }}">{{ $tag->title }}</a></p>
+                @empty
+                <p>Post is not related to any tag</p>
+                @endforelse
+            </div>
+        </div>
         <div class="d-flex flex-row justify-content-between">
             <p>{{ $date->day }} {{ $date->translatedFormat('F') }} {{ $date->year }} {{ $date->format('H:i') }}</p>
             <p>Комментариев всего: {{ $post->comments->count() }}</p>
@@ -61,6 +71,16 @@
                     <p>{{ $comment->user->name }} says:</p><p>{{ $comment->dateAsCarbon->diffForHumans() }}</p>
                 </div>
                 <p>{!! $comment->message !!}</p>
+                @if ( ($comment->user->id === auth()->user()->id) || auth()->user()->role === 1 )
+                <div class="d-flex">
+                    <p class="mr-1"><a href="#">Редактировать</a></p>
+                    <form class="mr-1" action="#" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-transparent border-0">Удалить {{ $comment->id }}</button>
+                    </form>
+                </div>
+                @endif
             </div>
         @endforeach
     </section>

@@ -10,7 +10,7 @@
     @method('PATCH')
         <div>
             <p><label for="summernote">Текст комментария: </label></p>
-            <p><textarea name="message" id="summernote">{{ $comment->message }}</textarea></p>
+            <p><textarea name="message" id="summernote">{!! $comment->message !!}</textarea></p>
             <p><input type="submit" value="Изменить"></p>
         @error('message')
             <p>Message can not be empty</p>
