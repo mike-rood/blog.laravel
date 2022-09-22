@@ -47,13 +47,14 @@
     </section>
     @auth()
     <section class="border">
-        <form action="{{ route('blog.comment.store', $post->id) }}" method="POST">
+        <form action="{{ route('blog.comment.update', ['post' => $post->id, 'comment' => $comment->id]) }}" method="POST">
             @csrf
+            @method('patch')
             <div>
-                <label for="summernote">Напишите комментарий:</label>
+                <label for="summernote">Редактирование комментария:</label>
             </div>
             <div>
-                <textarea class="w-100" name="message" id="summernote" value="{{ old('message') }}"></textarea>
+                <textarea class="w-100" name="message" id="summernote"">{!! $comment->message !!}</textarea>
             </div>
             @error('message')
             <div class="text-danger">{{ $message }}</div>
@@ -71,54 +72,8 @@
                     <p>{{ $comment->user->name }} says:</p><p>{{ $comment->dateAsCarbon->diffForHumans() }}</p>
                 </div>
                 <p>{!! $comment->message !!}</p>
-                @auth()
-                @if ( ($comment->user->id === auth()->user()->id) || auth()->user()->role === 1 )
-                <div class="d-flex">
-                    <p class="mr-1"><a href="{{ route('blog.comment.edit', ['post' => $post->id, 'comment' => $comment->id]) }}">Редактировать</a></p>
-                    <form class="mr-1" action="{{ route('blog.comment.delete', ['post' => $post->id, 'comment' => $comment->id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-transparent border-0 text-danger">Удалить</button>
-                    </form>
-                </div>
-                @endif
-                @endauth()
-                @if ($comment->created_at != $comment->updated_at)
-                <p>Комментарий был изменен {{ $comment->updated_at }}</p>
-                @endif
             </div>
         @endforeach
     </section>
-    <h5 class="mt-10">Схожие посты</h5>
-    <section class="my-grid">
-    @forelse ($relatedPosts as $post)
-    <a href="{{ route('blog.post.show', $post->id) }}">
-        <div class="border">
-            <p>{{ $post->title }}</p>                       
-            <img class="max-w-200" src="{{ asset('storage/' . $post->preview_image) }}" alt="preview"> 
-            <p>{{ $post->category->title }}</p>
-            <div class="d-flex flex-row justify-content-between">
-                <p>Комментарии: {{ $post->comments->count() }}</p>
-                <div class="d-flex flex-row justify-content-between align-items-baseline">
-                    <p class="mr-1">{{ $post->likes_count }} </p>
-                    @auth()
-                        @if(auth()->user()->likedPosts->contains($post->id))
-                            <i class="fa-solid fa-heart"></i>
-                            @else
-                            <i class="fa-regular fa-heart"></i>
-                        @endif
-                    @endauth
-                    @guest()
-                    <i class="fa-regular fa-heart"></i>
-                    @endguest()
-                </div>
-            </div>
-        </div>
-    </a>
-    @empty
-    <p>There is no posts</p>
-    @endforelse
-    </section>
 </main>
 @endsection
-

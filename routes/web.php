@@ -95,6 +95,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
     Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function() {
         Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function () {
+            Route::get('/{comment}', EditController::class)->name('blog.comment.edit');            
+            Route::patch('/{comment}', UpdateController::class)->name('blog.comment.update');
+            Route::delete('/{comment}', DeleteController::class)->name('blog.comment.delete');
             Route::post('/', StoreController::class)->name('blog.comment.store');
         });
         Route::group(['namespace' => 'Like', 'prefix' => '{post}/likes'], function () {
